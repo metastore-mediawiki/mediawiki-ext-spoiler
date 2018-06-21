@@ -1,9 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\MW_EXT_Spoiler;
+
+use OutputPage, Parser, PPFrame, Skin;
+
 /**
  * Class MW_EXT_Spoiler
  * ------------------------------------------------------------------------------------------------------------------ */
-
 class MW_EXT_Spoiler {
 
 	/**
@@ -40,7 +43,7 @@ class MW_EXT_Spoiler {
 	 * @param Parser $parser
 	 *
 	 * @return bool
-	 * @throws MWException
+	 * @throws \MWException
 	 * -------------------------------------------------------------------------------------------------------------- */
 
 	public static function onParserFirstCallInit( Parser $parser ) {
@@ -91,7 +94,7 @@ class MW_EXT_Spoiler {
 	 * -------------------------------------------------------------------------------------------------------------- */
 
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
-		$out->addModuleStyles( array( 'ext.mw.spoiler.styles' ) );
+		$out->addModuleStyles( [ 'ext.mw.spoiler.styles' ] );
 
 		return true;
 	}

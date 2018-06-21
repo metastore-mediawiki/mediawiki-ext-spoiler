@@ -11,17 +11,17 @@
 	"license-name": "[https://www.gnu.org/licenses/gpl-3.0.txt GPL-3.0]",
 	"type": "parserhook",
 	"require": {
-		"MediaWiki": ">= 1.30.0"
+		"MediaWiki": ">= 1.31.0"
 	},
 	"AutoloadClasses": {
-		"MW_EXT_Spoiler": "MW_EXT_Spoiler.class.php"
+		"MediaWiki\\Extension\\MW_EXT_Spoiler\\MW_EXT_Spoiler": "MW_EXT_Spoiler.class.php"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [
-			"MW_EXT_Spoiler::onParserFirstCallInit"
+			"MediaWiki\\Extension\\MW_EXT_Spoiler\\MW_EXT_Spoiler::onParserFirstCallInit"
 		],
 		"BeforePageDisplay": [
-			"MW_EXT_Spoiler::onBeforePageDisplay"
+			"MediaWiki\\Extension\\MW_EXT_Spoiler\\MW_EXT_Spoiler::onBeforePageDisplay"
 		]
 	},
 	"MessagesDirs": {

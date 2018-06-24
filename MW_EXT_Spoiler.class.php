@@ -3,39 +3,12 @@
 namespace MediaWiki\Extension\MW_EXT_Spoiler;
 
 use OutputPage, Parser, PPFrame, Skin;
+use MediaWiki\Extension\MW_EXT_Core\MW_EXT_Core;
 
 /**
  * Class MW_EXT_Spoiler
  * ------------------------------------------------------------------------------------------------------------------ */
 class MW_EXT_Spoiler {
-
-	/**
-	 * Clear DATA (escape html).
-	 *
-	 * @param $string
-	 *
-	 * @return string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
-	private static function clearData( $string ) {
-		$outString = htmlspecialchars( trim( $string ), ENT_QUOTES );
-
-		return $outString;
-	}
-
-	/**
-	 * Get MediaWiki issue.
-	 *
-	 * @param $string
-	 *
-	 * @return string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
-	private static function getMsgText( $string ) {
-		$outString = wfMessage( 'mw-ext-spoiler-' . $string )->inContentLanguage()->text();
-
-		return $outString;
-	}
 
 	/**
 	 * Register tag function.
@@ -65,8 +38,8 @@ class MW_EXT_Spoiler {
 
 	public static function onRenderTag( $input, $args = [], Parser $parser, PPFrame $frame ) {
 		// Argument: title.
-		$getTitle = self::clearData( $args['title'] ?? '' ?: '' );
-		$outTitle = empty( $getTitle ) ? self::getMsgText( 'title' ) : $getTitle;
+		$getTitle = MW_EXT_Core::outClear( $args['title'] ?? '' ?: '' );
+		$outTitle = empty( $getTitle ) ? MW_EXT_Core::getMessageText( 'spoiler', 'title' ) : $getTitle;
 
 		// Get content.
 		$getContent = trim( $input );

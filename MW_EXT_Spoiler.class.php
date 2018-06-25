@@ -46,9 +46,9 @@ class MW_EXT_Spoiler {
 		$outContent = $parser->recursiveTagParse( $getContent, $frame );
 
 		// Out HTML.
-		$outHTML = '<details class="mw-ext-spoiler">';
+		$outHTML = '<details class="mw-ext-spoiler navigation-not-searchable">';
 		$outHTML .= '<summary>' . $outTitle . '</summary>';
-		$outHTML .= '<div class="mw-ext-spoiler-body"><div class="mw-ext-spoiler-content">' . $outContent . '</div></div>';
+		$outHTML .= '<div class="mw-ext-spoiler-body"><div class="mw-ext-spoiler-content">' . "\n\r" . $outContent . "\n\r" . '</div></div>';
 		$outHTML .= '</details>';
 
 		// Out parser.

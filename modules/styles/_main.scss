@@ -1,5 +1,5 @@
 .mw-ext-spoiler {
-	box-shadow: 0 .2em .3em rgba(10, 10, 10, .1), 0 0 0 .1em rgba(10, 10, 10, .1);
+	box-shadow: 0 2px 3px rgba(10, 10, 10, .1), 0 0 0 1px rgba(10, 10, 10, .1);
 	margin: 1em 0;
 	padding: 1em;
 	summary {
@@ -16,7 +16,7 @@
 		}
 	}
 	&-body {
-		border-top: .1em solid hsl(0, 0%, 86%);
+		border-top: 1px solid hsl(0, 0%, 86%);
 		padding: 1em 0 0;
 		margin: 1em 0 0;
 	}

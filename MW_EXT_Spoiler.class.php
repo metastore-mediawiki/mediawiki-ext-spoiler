@@ -20,7 +20,7 @@ class MW_EXT_Spoiler {
 	 * -------------------------------------------------------------------------------------------------------------- */
 
 	public static function onParserFirstCallInit( Parser $parser ) {
-		$parser->setHook( 'spoiler', __CLASS__ . '::onRenderTag' );
+		$parser->setHook( 'spoiler', [ __CLASS__, 'onRenderTag' ] );
 
 		return true;
 	}

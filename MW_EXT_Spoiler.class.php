@@ -7,7 +7,7 @@ use MediaWiki\Extension\MW_EXT_Core\MW_EXT_Core;
 
 /**
  * Class MW_EXT_Spoiler
- * ------------------------------------------------------------------------------------------------------------------ */
+ */
 class MW_EXT_Spoiler {
 
 	/**
@@ -17,8 +17,7 @@ class MW_EXT_Spoiler {
 	 *
 	 * @return bool
 	 * @throws \MWException
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public static function onParserFirstCallInit( Parser $parser ) {
 		$parser->setHook( 'spoiler', [ __CLASS__, 'onRenderTag' ] );
 
@@ -34,8 +33,7 @@ class MW_EXT_Spoiler {
 	 * @param PPFrame $frame
 	 *
 	 * @return string
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public static function onRenderTag( $input, $args = [], Parser $parser, PPFrame $frame ) {
 		// Argument: title.
 		$getTitle = MW_EXT_Core::outClear( $args['title'] ?? '' ?: '' );
@@ -64,8 +62,7 @@ class MW_EXT_Spoiler {
 	 * @param Skin $skin
 	 *
 	 * @return bool
-	 * -------------------------------------------------------------------------------------------------------------- */
-
+	 */
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		$out->addModuleStyles( [ 'ext.mw.spoiler.styles' ] );
 

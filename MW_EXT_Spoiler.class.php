@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\MW_EXT_Spoiler;
 
 use OutputPage, Parser, PPFrame, Skin;
-use MediaWiki\Extension\MW_EXT_Core\MW_EXT_Core;
+use MediaWiki\Extension\MW_EXT_Kernel\MW_EXT_Kernel;
 
 /**
  * Class MW_EXT_Spoiler
@@ -36,8 +36,8 @@ class MW_EXT_Spoiler {
 	 */
 	public static function onRenderTag( $input, $args = [], Parser $parser, PPFrame $frame ) {
 		// Argument: title.
-		$getTitle = MW_EXT_Core::outClear( $args['title'] ?? '' ?: '' );
-		$outTitle = empty( $getTitle ) ? MW_EXT_Core::getMessageText( 'spoiler', 'title' ) : $getTitle;
+		$getTitle = MW_EXT_Kernel::outClear( $args['title'] ?? '' ?: '' );
+		$outTitle = empty( $getTitle ) ? MW_EXT_Kernel::getMessageText( 'spoiler', 'title' ) : $getTitle;
 
 		// Get content.
 		$getContent = trim( $input );

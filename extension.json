@@ -17,14 +17,14 @@
 		}
 	},
 	"AutoloadClasses": {
-		"MediaWiki\\Extension\\METADATA\\MW_EXT_Spoiler": "MW_EXT_Spoiler.class.php"
+		"MediaWiki\\Extension\\MetaStore\\MW_EXT_Spoiler": "MW_EXT_Spoiler.class.php"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": [
-			"MediaWiki\\Extension\\METADATA\\MW_EXT_Spoiler::onParserFirstCallInit"
+			"MediaWiki\\Extension\\MetaStore\\MW_EXT_Spoiler::onParserFirstCallInit"
 		],
 		"BeforePageDisplay": [
-			"MediaWiki\\Extension\\METADATA\\MW_EXT_Spoiler::onBeforePageDisplay"
+			"MediaWiki\\Extension\\MetaStore\\MW_EXT_Spoiler::onBeforePageDisplay"
 		]
 	},
 	"MessagesDirs": {

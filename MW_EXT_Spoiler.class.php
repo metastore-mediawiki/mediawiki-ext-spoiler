@@ -18,7 +18,8 @@ class MW_EXT_Spoiler {
 	 * @throws \MWException
 	 */
 	public static function onParserFirstCallInit( Parser $parser ) {
-		$parser->setHook( 'spoiler', [ __CLASS__, 'onRenderTag' ] );
+		$parser->setHook( 'spoiler', [ __CLASS__, 'onRenderTagSpoiler' ] );
+		$parser->setHook( 'hide', [ __CLASS__, 'onRenderTagHide' ] );
 
 		return true;
 	}
@@ -27,13 +28,13 @@ class MW_EXT_Spoiler {
 	 * Render tag function.
 	 *
 	 * @param $input
-	 * @param array $args
 	 * @param Parser $parser
 	 * @param PPFrame $frame
+	 * @param array $args
 	 *
 	 * @return string
 	 */
-	public static function onRenderTag( $input, $args = [], Parser $parser, PPFrame $frame ) {
+	public static function onRenderTagSpoiler( $input, Parser $parser, PPFrame $frame, $args = [] ) {
 		// Argument: title.
 		$getTitle = MW_EXT_Kernel::outClear( $args['title'] ?? '' ?: '' );
 		$outTitle = empty( $getTitle ) ? MW_EXT_Kernel::getMessageText( 'spoiler', 'title' ) : $getTitle;
@@ -47,6 +48,29 @@ class MW_EXT_Spoiler {
 		$outHTML .= '<summary>' . $outTitle . '</summary>';
 		$outHTML .= '<div class="mw-ext-spoiler-body"><div class="mw-ext-spoiler-content">' . "\n\r" . $outContent . "\n\r" . '</div></div>';
 		$outHTML .= '</details>';
+
+		// Out parser.
+		$outParser = $outHTML;
+
+		return $outParser;
+	}
+
+	/**
+	 * @param $input
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 *
+	 * @return string
+	 */
+	public static function onRenderTagHide( $input, Parser $parser, PPFrame $frame ) {
+		// Get content.
+		$getContent = trim( $input );
+		$outContent = $parser->recursiveTagParse( $getContent, $frame );
+
+		// Out HTML.
+		$outHTML = '<span class="mw-ext-hide navigation-not-searchable">';
+		$outHTML .= '<span class="mw-ext-hide-body"><span class="mw-ext-hide-content">' . $outContent . '</span></span>';
+		$outHTML .= '</span>';
 
 		// Out parser.
 		$outParser = $outHTML;

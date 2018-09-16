@@ -35,3 +35,15 @@
 		}
 	}
 }
+
+.mw-ext-hide {
+	&-body {
+		cursor: help;
+		visibility: hidden;
+	}
+	&:hover {
+		&-body {
+			visibility: visible;
+		}
+	}
+}

@@ -28,13 +28,13 @@ class MW_EXT_Spoiler {
 	 * Render tag function: Spoiler.
 	 *
 	 * @param $input
+	 * @param array $args
 	 * @param Parser $parser
 	 * @param PPFrame $frame
-	 * @param array $args
 	 *
 	 * @return string
 	 */
-	public static function onRenderTagSpoiler( $input, Parser $parser, PPFrame $frame, $args = [] ) {
+	public static function onRenderTagSpoiler( $input, array $args, Parser $parser, PPFrame $frame ) {
 		// Argument: title.
 		$getTitle = MW_EXT_Kernel::outClear( $args['title'] ?? '' ?: '' );
 		$outTitle = empty( $getTitle ) ? MW_EXT_Kernel::getMessageText( 'spoiler', 'title' ) : $getTitle;

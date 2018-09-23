@@ -25,7 +25,7 @@ class MW_EXT_Spoiler {
 	}
 
 	/**
-	 * Render tag function.
+	 * Render tag function: Spoiler.
 	 *
 	 * @param $input
 	 * @param Parser $parser
@@ -56,6 +56,8 @@ class MW_EXT_Spoiler {
 	}
 
 	/**
+	 * Render tag function: Hide.
+	 *
 	 * @param $input
 	 * @param Parser $parser
 	 * @param PPFrame $frame
